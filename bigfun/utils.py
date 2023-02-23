@@ -162,7 +162,7 @@ class CloudRun:
     def deploy(self, source_folder):
         print_info(f'Deploy Cloud Run service `{self.service}`')
         return self.exec(
-            'gcloud --beta run deploy',
+            'gcloud beta run deploy',
             options={
                 'source': source_folder,
                 'max-instances': 100,
