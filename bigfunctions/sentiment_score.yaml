@@ -18,8 +18,33 @@ examples:
     output: "0.945"
     region: ALL
 code: |
+  if not content:
+    return None 
+
   import google.cloud.language_v1 as language
+  from html.parser import HTMLParser
+  from io import StringIO
+
   language_client = language.LanguageServiceClient()
+
+  class MLStripper(HTMLParser):
+      def __init__(self):
+          super().__init__()
+          self.reset()
+          self.fed = []
+
+      def handle_data(self, d):
+          self.fed.append(d)
+      def get_data(self):
+          return ' '.join(self.fed).replace("\n","").replace("-",".").replace("  ", " ").replace(" .", ".")
+
+  def strip_tags(html):
+      s = MLStripper()
+      s.feed(html)
+      return s.get_data()
+
+  content = strip_tags(content)
+
   document = language.Document(content=content, type_=language.Document.Type.PLAIN_TEXT)
   request = language.AnalyzeSentimentRequest(document=document)
   sentiment = language_client.analyze_sentiment(request=request).document_sentiment

@@ -169,7 +169,7 @@ class CloudRun:
                 'cpu-boost':'',
                 'memory': '256Mi',
                 'cpu': 1,
-                'concurrency': 80,
+                'concurrency': 10,
                 'platform': 'managed',
                 'quiet': '',
                 'no-allow-unauthenticated': '',
