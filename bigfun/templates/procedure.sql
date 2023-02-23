@@ -6,6 +6,4 @@ begin
 
 {{ code }}
 
-insert into {{ dataset }}.logs (bigfunction_name) values('{{ name }}');
-
 end;
