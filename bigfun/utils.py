@@ -165,10 +165,11 @@ class CloudRun:
             'gcloud run deploy',
             options={
                 'source': source_folder,
-                'max-instances': 1,
+                'max-instances': 100,
+                'startup-cpu-boost': 'true',
                 'memory': '256Mi',
                 'cpu': 1,
-                'concurrency': 8,
+                'concurrency': 80,
                 'platform': 'managed',
                 'quiet': '',
                 'no-allow-unauthenticated': '',
