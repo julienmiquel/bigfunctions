@@ -162,11 +162,11 @@ class CloudRun:
     def deploy(self, source_folder):
         print_info(f'Deploy Cloud Run service `{self.service}`')
         return self.exec(
-            'gcloud run deploy',
+            'gcloud --beta run deploy',
             options={
                 'source': source_folder,
                 'max-instances': 100,
-                'startup-cpu-boost': 'true',
+                'cpu-boost': 'true',
                 'memory': '256Mi',
                 'cpu': 1,
                 'concurrency': 80,
