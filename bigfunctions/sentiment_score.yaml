@@ -10,12 +10,12 @@ arguments:
     type: string
 output:
   name: sentiment_score
-  type: float64
+  type: struct<score float64, magnitude float64>
 examples:
   - description: ""
     arguments:
       - "'BigFunctions Rocks!'"
-    output: "0.945"
+    output: ["0.945", "0.2"]
     region: ALL
 code: |
   import google.cloud.language_v1 as language
