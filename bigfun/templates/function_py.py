@@ -17,11 +17,15 @@ def compute(args):
 def handle():
     try:
         request_json = request.get_json()
-        print(request_json)
+        #print(request_json)
         rows = request_json['calls']
 
         replies = [compute(row) for row in rows]
+        #print(replies)
         return jsonify( { "replies" :  replies} )
     except Exception:
+        print("ERROR")
+        print(request_json)
+        print(replies)
         error_reporter.report_exception(google.cloud.error_reporting.build_flask_context(request))
         return traceback.format_exc(), 400
