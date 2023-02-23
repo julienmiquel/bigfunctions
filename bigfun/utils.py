@@ -166,7 +166,7 @@ class CloudRun:
             options={
                 'source': source_folder,
                 'max-instances': 100,
-                'cpu-boost': 'true',
+                'cpu-boost':'',
                 'memory': '256Mi',
                 'cpu': 1,
                 'concurrency': 80,
