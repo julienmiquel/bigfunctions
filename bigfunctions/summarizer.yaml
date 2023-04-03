@@ -9,8 +9,8 @@ arguments:
   - name: content
     type: string
 output:
-  name: arr
-  type: any type
+  name: summary
+  type: string
 examples:
   - description: ""
     arguments:
@@ -20,7 +20,7 @@ examples:
 code: |
   if not content:
     print("no content")
-    arr = ""
+    summary = ""
   else:
     import torch
     from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
@@ -36,8 +36,8 @@ code: |
                                 length_penalty=20, 
                                 num_beams=2)
 
-    arr = tokenizer.decode(summary_ids[0], skip_special_tokens=True)
+    summary = tokenizer.decode(summary_ids[0], skip_special_tokens=True)
     
-  return arr
+  return summary
 requirements: |
   torch transformers
