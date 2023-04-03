@@ -40,4 +40,5 @@ code: |
     
   return summary
 requirements: |
-  torch transformers
+  torch 
+  transformers
